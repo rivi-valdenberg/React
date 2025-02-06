@@ -18,10 +18,10 @@ const Menu = () => {
         <>
             <Box style={navStyle} sx={{ display: "flex", gap: 3 }}>
                 <Button component={Link} to="Recipies" sx={{ color: "#42a5f5" }}>
-                     All Recipes
+                    All Recipes
                 </Button>
                 {isConnected && <Button component={Link} to="AddRecipe" sx={{ color: "#42a5f5" }}>
-                     Add Recipe
+                    Add Recipe
                 </Button>}
                 <Button component={Link} to="HomePage" sx={{ color: "#42a5f5" }}>
                      Home

@@ -1,6 +1,6 @@
 import { observer } from "mobx-react-lite";
 import { Card, CardContent, CardHeader, Grid, Grid2, List, ListItem, Typography } from "@mui/material";
-import { Recipe } from "../Types1";
+import { Recipe } from "../Types";
 
 const RecipeDetails = observer(({ recipe }: { recipe: Recipe }) => {
 

@@ -1,5 +1,5 @@
 import { createContext, useReducer } from "react";
-import { Action, User } from "../Types1";
+import { Action, User } from "../Types";
 
 const userReducer = (state: User, action: Action): User => {
   switch (action.type) {
@@ -21,7 +21,7 @@ const userReducer = (state: User, action: Action): User => {
       };
 
     case "DELETE":
-      return emptyUser; 
+      return emptyUser;
 
     default:
       return state;

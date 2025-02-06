@@ -5,7 +5,7 @@ import Update from './Update';
 import React from 'react';
 
 
-const UserAvatar = ({url}:{url:string}) => {
+const NameAvatar = ({url}:{url:string}) => {
   function stringToColor(string: string) {
     let hash = 0;
     let i;
@@ -28,11 +28,11 @@ const UserAvatar = ({url}:{url:string}) => {
       sx: {
         bgcolor: stringToColor(name),
       },
-      children: `${name.split(' ')[0][0]}`/*${name.split(' ')[1]??[0]}*/
+      children: `${name.split(' ')[0][0]}`
     };
   }
 
-  const { user, dispatch } = React.useContext(UserContext)
+  const { user } = React.useContext(UserContext)
  console.log(user);
  
   return (<>
@@ -45,4 +45,4 @@ const UserAvatar = ({url}:{url:string}) => {
   </>)
 
 }
-export default UserAvatar;
+export default NameAvatar;

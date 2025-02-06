@@ -1,6 +1,6 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import axios from "axios";
-import { Recipe } from "../Types1";
+import { Recipe } from "../Types";
 
 class RecipesStore {
     recipes: Recipe[] = [];

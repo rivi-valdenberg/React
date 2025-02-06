@@ -1,6 +1,6 @@
 import { Box, Button, Modal, TextField, Typography } from "@mui/material";
 import { styleForm } from "./Style";
-import { Recipe } from "../Types1";
+import { Recipe } from "../Types";
 import recipesStore from "./RecipesStore";
 import { useNavigate } from "react-router";
 import { useForm } from "react-hook-form";

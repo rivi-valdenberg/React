@@ -2,8 +2,9 @@ import { Box, Button, Modal, TextField } from "@mui/material";
 import { FormEvent, useContext, useRef, useState } from "react";
 import { UserContext } from "./MyUserContext";
 import axios from "axios";
-import { Action } from "../Types1";
+import { Action } from "../Types";
 import { styleForm } from "./Style";
+import ErrorSnackbar from "./Error";
 
 const Update = ({ url }: { url: string }) => {
 
@@ -15,17 +16,16 @@ const Update = ({ url }: { url: string }) => {
 
     const { user, dispatch } = useContext(UserContext);
     const [open, setOpen] = useState(false);
+    const [error, setError] = useState<any>(null);
+    const [openSnackbar, setOpenSnackbar] = useState(false);
     const Jsondata = localStorage.getItem("formData");
     let data = { email: "", password: "" };
     if (Jsondata) {
         data = JSON.parse(Jsondata);
-    } 
-
+    }
 
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
-        console.log(user);
-
         const action: Action = {
             type: 'UPDATE',
             data: {
@@ -38,26 +38,18 @@ const Update = ({ url }: { url: string }) => {
             }
         };
         dispatch(action);
-        console.log(user);
-        console.log(data)
-        console.log(action.data)
-
         try {
             const response = await axios.put(`${url}`, action.data, { headers: { 'user-id': action.data.id } }
             )
-            
         }
-        catch (e) {
-            if (axios.isAxiosError(e)) {
-                if (e.response?.status === 404)
-                    alert(`${e.response?.data.message}`)
-            }
+        catch (e: any) {
+            setError(error);
+            setOpenSnackbar(true);
         }
         setOpen(false);
     }
 
     return (
-
         <>
             <Button onClick={() => { setOpen(true) }}>update</Button>
             <Modal open={open} onClose={() => { setOpen(false) }}>
@@ -72,6 +64,7 @@ const Update = ({ url }: { url: string }) => {
                     </form>
                 </Box>
             </Modal >
+            <ErrorSnackbar error={error} open={openSnackbar} onClose={() => setOpenSnackbar(false)} />
         </>
     )
 }

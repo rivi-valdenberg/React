@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { observer } from "mobx-react-lite";
 import { Container, Grid, Typography, Paper, List, ListItem, CircularProgress, Button } from "@mui/material";
 import recipesStore from "./RecipesStore";
-import { Recipe } from "../Types1";
+import { Recipe } from "../Types";
 import RecipeDetails from "./RecipeDetails";
 
 const Recipies = observer(() => {
